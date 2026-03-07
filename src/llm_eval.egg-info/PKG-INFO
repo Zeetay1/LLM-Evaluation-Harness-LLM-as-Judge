@@ -1,0 +1,44 @@
+Metadata-Version: 2.4
+Name: llm-eval
+Version: 0.1.0
+Summary: LLM Evaluation Harness (LLM-as-Judge)
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: anthropic>=0.18.0
+Requires-Dist: pydantic>=2.0
+Requires-Dist: fastapi>=0.109.0
+Requires-Dist: uvicorn[standard]>=0.27.0
+Requires-Dist: httpx>=0.26.0
+Provides-Extra: dev
+Requires-Dist: pytest>=7.4.0; extra == "dev"
+Requires-Dist: pytest-asyncio>=0.23.0; extra == "dev"
+
+# LLM Evaluation Harness (LLM-as-Judge)
+
+An evaluation framework where an LLM judges the outputs of other LLMs, with bias metrics and cost tracking.
+
+## Setup
+
+```bash
+python -m venv .venv
+.venv\Scripts\Activate.ps1   # Windows
+# source .venv/bin/activate  # Linux/macOS
+pip install -r requirements.txt
+pip install -e .
+```
+
+## Run tests
+
+```bash
+pytest tests/ -v
+```
+
+No `ANTHROPIC_API_KEY` required; all LLM calls are mocked in tests.
+
+## Start API and dashboard
+
+```bash
+uvicorn src.llm_eval.api.main:app --host 0.0.0.0 --port 8000
+```
+
+Open http://localhost:8000 for the dashboard.

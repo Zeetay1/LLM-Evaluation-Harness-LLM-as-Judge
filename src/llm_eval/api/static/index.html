@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LLM Evaluation Harness</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <header>
+    <h1>LLM Evaluation Harness</h1>
+  </header>
+  <nav>
+    <button data-view="leaderboard">Leaderboard</button>
+    <button data-view="runs">Runs</button>
+    <button data-view="compare">Compare models</button>
+  </nav>
+  <main>
+    <section id="leaderboard-view">
+      <h2>Leaderboard</h2>
+      <p>Models ranked by average score per rubric (from stored history).</p>
+      <table id="leaderboard-table">
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Rubric</th>
+            <th>Avg score</th>
+            <th>Runs</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+    <section id="runs-view" class="hidden">
+      <h2>Evaluation runs</h2>
+      <p>Click a run to see details and bias/cost metrics.</p>
+      <div id="runs-list"></div>
+      <div id="run-detail" class="hidden">
+        <h3>Run: <span id="run-detail-id"></span></h3>
+        <div id="run-bias-cost" class="bias-cost"></div>
+        <table id="run-items-table">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Question</th>
+              <th>Overall score</th>
+              <th>Scores</th>
+              <th>Reasoning</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+    <section id="compare-view" class="hidden">
+      <h2>Compare two models</h2>
+      <label>Model A: <select id="compare-model-a"></select></label>
+      <label>Model B: <select id="compare-model-b"></select></label>
+      <button id="compare-btn">Compare</button>
+      <div id="compare-result"></div>
+    </section>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>
